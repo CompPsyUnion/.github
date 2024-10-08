@@ -75,6 +75,9 @@ async function main() {
     content += '\n'; // Separate sections with newlines
   }
 
+  // Add P.S. section at the end of the file
+  content += '### P.S.\n该社员墙通过工作流进行定时更新。\n';
+
   // Write members section to members.md
   fs.writeFileSync('members.md', content);
 }
