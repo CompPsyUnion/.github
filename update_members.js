@@ -36,32 +36,38 @@ async function fetchTeamMembers(membersUrl) {
 async function main() {
   const teams = await fetchTeams();
   
-  const teamMembers = {};
+  let content = "# Organization Members\n";
 
   for (const team of teams) {
     const membersUrl = team.members_url.replace("{/member}", ""); // Remove the placeholder
     const members = await fetchTeamMembers(membersUrl);
+
+    content += `## ${team.name}\n`;
     
-    teamMembers[team.name] = members.map(member => ({
-      login: member.login,
-      avatar_url: member.avatar_url
-    }));
-  }
+    // Determine the number of columns based on the number of members
+    const columns = Math.min(members.length, 6);
+    const rows = Math.ceil(members.length / columns);
+    
+    // Add the header for the Markdown table
+    content += '| ' + ' | '.repeat(columns) + '|\n';
+    content += '|:-------------------:|' + '|:-------------------:|'.repeat(columns - 1) + '\n';
 
-  let content = "# Organization Members\n";
-
-  for (const team in teamMembers) {
-    content += `## ${team}\n`;
-    content += "|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|\n";
-    content += "|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|\n";
-
-    const membersRow = teamMembers[team].map(member => {
-      return `${member.login}|<img height='48' width='48' src='${member.avatar_url}'>`;
-    });
-
-    while (membersRow.length > 0) {
-      const row = membersRow.splice(0, 6).join('|');
-      content += row + '\n';
+    // Populate the table with member data
+    for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
+      const row = [];
+      for (let colIndex = 0; colIndex < columns; colIndex++) {
+        const memberIndex = rowIndex * columns + colIndex;
+        if (memberIndex < members.length) {
+          const member = members[memberIndex];
+          const login = member.login;
+          const avatar_url = member.avatar_url;
+          const link = `https://github.com/${login}`;
+          row.push(`<img height='48' width='48' src='${avatar_url}'><br>@[${login}](${link})`);
+        } else {
+          row.push(''); // Empty cell for any remaining empty spots
+        }
+      }
+      content += '|' + row.join('|') + '|\n';
     }
   }
 
