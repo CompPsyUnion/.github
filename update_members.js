@@ -44,20 +44,20 @@ async function main() {
 
     content += `### ${team.name}\n`;
     
-    // Define the number of columns
-    const columns = 3; // Set the number of columns for the table
-    const rows = Math.ceil(members.length / columns);
+    // Set the maximum number of members per row
+    const maxMembersPerRow = 10; 
+    const rows = Math.ceil(members.length / maxMembersPerRow);
     
     // Add the header for the Markdown table
-    content += '|:construction_worker:'.repeat(columns) + '|\n';
-    content += '|:-------------------:'.repeat(columns) + '|\n';
+    content += '|:construction_worker:'.repeat(maxMembersPerRow) + '|\n';
+    content += '|:-------------------:'.repeat(maxMembersPerRow) + '|\n';
 
     // Populate the table with member data
     for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
       const avatarsRow = [];
       const namesRow = [];
-      for (let colIndex = 0; colIndex < columns; colIndex++) {
-        const memberIndex = rowIndex * columns + colIndex;
+      for (let colIndex = 0; colIndex < maxMembersPerRow; colIndex++) {
+        const memberIndex = rowIndex * maxMembersPerRow + colIndex;
         if (memberIndex < members.length) {
           const member = members[memberIndex];
           const login = member.login;
