@@ -19,13 +19,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install node-fetch
+          npm install node-fetch@latest
 
       - name: Update members
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          #!/bin/bash
           node update_members.js
 
       - name: Commit and Push
