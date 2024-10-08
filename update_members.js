@@ -42,19 +42,20 @@ async function main() {
     const membersUrl = team.members_url.replace("{/member}", ""); // Remove the placeholder
     const members = await fetchTeamMembers(membersUrl);
 
-    content += `## ${team.name}\n`;
+    content += `### ${team.name}\n`;
     
     // Define the number of columns
-    const columns = 6; // Fixed number of columns for table layout
+    const columns = 3; // Set the number of columns for the table
     const rows = Math.ceil(members.length / columns);
     
     // Add the header for the Markdown table
-    content += '| ' + ' | '.repeat(columns) + '|\n';
-    content += '|:-------------------:|' + '|:-------------------:|'.repeat(columns - 1) + '\n';
+    content += '|:construction_worker:'.repeat(columns) + '|\n';
+    content += '|:-------------------:'.repeat(columns) + '|\n';
 
     // Populate the table with member data
     for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
-      const row = [];
+      const avatarsRow = [];
+      const namesRow = [];
       for (let colIndex = 0; colIndex < columns; colIndex++) {
         const memberIndex = rowIndex * columns + colIndex;
         if (memberIndex < members.length) {
@@ -62,12 +63,15 @@ async function main() {
           const login = member.login;
           const avatar_url = member.avatar_url;
           const link = `https://github.com/${login}`;
-          row.push(`<img height='48' width='48' src='${avatar_url}'><br>@[${login}](${link})`);
+          avatarsRow.push(`<img height='48' width='48' src='${avatar_url}'>`);
+          namesRow.push(`[@${login}](${link})`);
         } else {
-          row.push(''); // Empty cell for any remaining empty spots
+          avatarsRow.push(''); // Empty cell for any remaining empty spots
+          namesRow.push('');   // Empty cell for names
         }
       }
-      content += '|' + row.join('|') + '|\n'; // Join row content with pipes
+      content += '|' + avatarsRow.join('|') + '|\n'; // Join avatars row with pipes
+      content += '|' + namesRow.join('|') + '|\n';   // Join names row with pipes
     }
     content += '\n'; // Add a new line after each team for better readability
   }
