@@ -1,12 +1,27 @@
 Hi👋 , we're Computer Psycho Union, UNNC!  
 👋 你好，我们是宁波诺丁汉大学计算机爱好者协会！  
+![CPU_HomePage_View](https://komarev.com/ghpvc/?username=comppsyunion&label=Profile%20views&color=0e75b6&style=flat)
 
 ## Touch us / 联系我们  
 📮Email: computerpsychounion@nottingham.edu.cn  
 💬WeChat: 宁诺CPU  
 
-## Projects / 团队项目
+## Our Projects / 团队项目
 
+
+## On-site Activities / 校内活动
+  - 技术分享交流会 Tech Sharing Seminar   
+    Open to all CS Students, [CLICK HERE](https://forms.office.com/r/iU3z5BhiBf) to subcribe the information(UNNC Account required).  
+    ⚠️Tips: Seminars will be given in Chinese.  
+    面向所有计算机系学生开放，[点击此处](https://forms.office.com/r/iU3z5BhiBf)订阅我们的邮件通知。  
+  - CS学生大讲堂 CS Student Public Lecture  
+    For Year 1 Gaokao Student, there will be 2 blue SPDPO credit. 对于大一年级学生将会有2蓝色SPDPO学分。  
+  - 趣味编程大赛（程序设计比赛） Programming Competition  
+    For Year 1 Gaokao Student, there will be SPDPO credits. 对于大一年级学生将会有SPDPO学分。  
+  - 趣味CTF网安竞赛 CTF Competition  
+    For Year 1 Gaokao Student, there will be SPDPO credits. 对于大一年级学生将会有SPDPO学分。  
+  - LEGO EV3 机器人活动 LEGO EV3 robotics activities  
+    For Year 1 Gaokao Student, there will be SPDPO credits. 对于大一年级学生将会有SPDPO学分。  
 
 ## Join us / 加入我们
 If you’re a student in UNNC, welcome to join us!  
