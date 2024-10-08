@@ -24,6 +24,3 @@ layout: post
 | <img src="https://avatars.githubusercontent.com/u/37460139?v=4" width="36" height="36" /> | <img src="https://avatars.githubusercontent.com/u/39254250?v=4" width="36" height="36" /> | <img src="https://avatars.githubusercontent.com/u/144885467?v=4" width="36" height="36" /> |
 | [@xuanzhi33](https://github.com/xuanzhi33) | [@buduan](https://github.com/buduan) | [@Pleasurecruise](https://github.com/Pleasurecruise) |
 <!--END_SECTION:members-->
-
-### P.S.
-该社员墙通过工作流进行定时更新
