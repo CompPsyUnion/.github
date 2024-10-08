@@ -30,7 +30,7 @@ jobs:
 
       - name: Replace members section in members.md
         run: |
-          readme_content=$(cat _posts/members.md)  # 确保路径正确
+          readme_content=$(cat _pages/members.md)  # 确保路径正确
           members_content=$(cat members.md)
   
           echo "$readme_content" | awk -v new_content="$members_content" '
@@ -38,14 +38,14 @@ jobs:
             /<!--START_SECTION:members-->/ { print; found=1; next }
             /<!--END_SECTION:members-->/ { print new_content; found=0 }
             !found { print }
-          ' > _posts/members.md  # 确保输出到正确的路径
+          ' > _pages/members.md  # 确保输出到正确的路径
 
       - name: Check if members.md exists
         run: |
-          if [ -f _posts/members.md ]; then
-            echo "File _posts/members.md exists."
+          if [ -f _pages/members.md ]; then
+            echo "File _pages/members.md exists."
           else
-            echo "File _posts/members.md does not exist."
+            echo "File _pages/members.md does not exist."
             exit 1
           fi
 
@@ -53,6 +53,6 @@ jobs:
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          git add _posts/members.md  # 确保路径正确
+          git add _pages/members.md  # 确保路径正确
           git commit -m "Update members wall in members.md" || echo "No changes to commit"
           git push
