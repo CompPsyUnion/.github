@@ -43,11 +43,12 @@ async function main() {
     const members = await fetchTeamMembers(membersUrl);
 
     content += `### ${team.name}\n\n`; // Markdown for headings
-    const maxMembersPerRow = 3; // Show 3 members per row for better layout
+
+    const maxMembersPerRow = 10; // Show a maximum of 10 members per row
 
     // Add a header row for the team
-    content += '| :construction_worker: | :construction_worker: | :construction_worker: |\n';
-    content += '|:-------------------:|:-------------------:|:-------------------:|\n';
+    content += '| ' + ':construction_worker: '.repeat(maxMembersPerRow) + '|\n';
+    content += '|:' + ':---:|'.repeat(maxMembersPerRow) + '\n';
 
     for (let i = 0; i < members.length; i += maxMembersPerRow) {
       content += '|'; // Start of a new row
@@ -59,12 +60,28 @@ async function main() {
           const link = `https://github.com/${login}`;
           
           // Using HTML <img> tag to control image size
-          content += ` <img src="${avatar_url}" width="36" height="36" /> [@${login}](${link}) |`;
+          content += ` <img src="${avatar_url}" width="36" height="36" /> |`;
         } else {
           content += '   |'; // Empty cell if row is incomplete
         }
       }
       content += '\n'; // End of row
+
+      // Add the usernames in the next row
+      content += '|'; // Start of username row
+      for (let j = 0; j < maxMembersPerRow; j++) {
+        if (i + j < members.length) {
+          const member = members[i + j];
+          const login = member.login;
+          const link = `https://github.com/${login}`;
+          
+          // Add the username below the avatar
+          content += ` [@${login}](${link}) |`;
+        } else {
+          content += '   |'; // Empty cell if row is incomplete
+        }
+      }
+      content += '\n'; // End of username row
     }
 
     content += '\n'; // Separate sections with newlines
