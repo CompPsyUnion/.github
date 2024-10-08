@@ -17,16 +17,12 @@ jobs:
         with:
           node-version: '21'
 
-      - name: Install dependencies
-        run: |
-          npm install node-fetch
-
       - name: Update members
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          chmod +x update_members.js
-          ./update_members.js
+          #!/bin/bash
+          node update_members.js
 
       - name: Commit and Push
         run: |
