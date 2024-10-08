@@ -43,37 +43,30 @@ async function main() {
     const members = await fetchTeamMembers(membersUrl);
 
     content += `### ${team.name}\n`;
+
+    const maxMembersPerRow = 10;
+    const memberCount = members.length < maxMembersPerRow ? members.length : maxMembersPerRow; // Limit to actual member count
+
+    // Add the header for the Markdown table based on actual member count
+    content += '|:construction_worker:'.repeat(memberCount) + '|\n';
+    content += '|:-------------------:'.repeat(memberCount) + '|\n';
+
+    const avatarsRow = [];
+    const namesRow = [];
     
-    // Set the maximum number of members per row
-    const maxMembersPerRow = 10; 
-
-    // Add the header for the Markdown table
-    content += '|:construction_worker:'.repeat(maxMembersPerRow) + '|\n';
-    content += '|:-------------------:'.repeat(maxMembersPerRow) + '|\n';
-
-    // Populate the table with member data
-    for (let i = 0; i < members.length; i += maxMembersPerRow) {
-      const avatarsRow = [];
-      const namesRow = [];
-      
-      for (let j = 0; j < maxMembersPerRow; j++) {
-        const memberIndex = i + j;
-        if (memberIndex < members.length) {
-          const member = members[memberIndex];
-          const login = member.login;
-          const avatar_url = member.avatar_url;
-          const link = `https://github.com/${login}`;
-          avatarsRow.push(`<img height='48' width='48' src='${avatar_url}'>`);
-          namesRow.push(`[@${login}](${link})`);
-        } else {
-          avatarsRow.push(''); // Empty cell for any remaining empty spots
-          namesRow.push('');   // Empty cell for names
-        }
-      }
-
-      content += '|' + avatarsRow.join('|') + '|\n'; // Join avatars row with pipes
-      content += '|' + namesRow.join('|') + '|\n';   // Join names row with pipes
+    // Populate the table with member data, but limit to actual member count
+    for (let i = 0; i < memberCount; i++) {
+      const member = members[i];
+      const login = member.login;
+      const avatar_url = member.avatar_url;
+      const link = `https://github.com/${login}`;
+      avatarsRow.push(`<img height='48' width='48' src='${avatar_url}'>`);
+      namesRow.push(`[@${login}](${link})`);
     }
+
+    content += '|' + avatarsRow.join('|') + '|\n'; // Join avatars row with pipes
+    content += '|' + namesRow.join('|') + '|\n';   // Join names row with pipes
+
     content += '\n'; // Add a new line after each team for better readability
   }
 
