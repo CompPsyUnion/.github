@@ -13,26 +13,3 @@
 需要有明确的规划，比如：主要使用的语言，项目readme等。不能烂尾。
 
 ## 社团/社区 注意事项
-
-## 组织历届成员
-
-该成员墙通过该仓库的工作流进行生成，每周一定时更新
-
-<!--START_SECTION:members-->
-### Java
-
-| <img src="https://avatars.githubusercontent.com/u/144885467?v=4" width="36" height="36" /> | <img src="https://avatars.githubusercontent.com/u/174010131?v=4" width="36" height="36" /> |
-| [@Pleasurecruise](https://github.com/Pleasurecruise) | [@Code-is-47](https://github.com/Code-is-47) |
-
-
-### Vue
-
-| <img src="https://avatars.githubusercontent.com/u/37460139?v=4" width="36" height="36" /> | <img src="https://avatars.githubusercontent.com/u/39254250?v=4" width="36" height="36" /> | <img src="https://avatars.githubusercontent.com/u/120773486?v=4" width="36" height="36" /> | <img src="https://avatars.githubusercontent.com/u/144885467?v=4" width="36" height="36" /> |
-| [@xuanzhi33](https://github.com/xuanzhi33) | [@buduan](https://github.com/buduan) | [@HNRobert](https://github.com/HNRobert) | [@Pleasurecruise](https://github.com/Pleasurecruise) |
-
-
-### 核心成员
-
-| <img src="https://avatars.githubusercontent.com/u/37460139?v=4" width="36" height="36" /> | <img src="https://avatars.githubusercontent.com/u/39254250?v=4" width="36" height="36" /> | <img src="https://avatars.githubusercontent.com/u/144885467?v=4" width="36" height="36" /> |
-| [@xuanzhi33](https://github.com/xuanzhi33) | [@buduan](https://github.com/buduan) | [@Pleasurecruise](https://github.com/Pleasurecruise) |
-<!--END_SECTION:members-->

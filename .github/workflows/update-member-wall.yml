@@ -28,18 +28,18 @@ jobs:
         run: |
           node update_members.js
 
-      - name: Replace members section in README
+      - name: Replace members section in members.md
         run: |
-          readme_content=$(cat README.md)
+          readme_content=$(cat _posts/members.md)
           members_content=$(cat members.md)
-
+  
           echo "$readme_content" | awk -v new_content="$members_content" '
             BEGIN { found=0 }
             /<!--START_SECTION:members-->/ { print; found=1; next }
             /<!--END_SECTION:members-->/ { print new_content; found=0 }
             !found { print }
-          ' > README.md
-
+          ' > _posts/members.md
+  
       - name: Commit and Push changes
         run: |
           git config --global user.name "GitHub Action"
