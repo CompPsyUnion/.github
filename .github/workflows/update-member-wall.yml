@@ -30,7 +30,7 @@ jobs:
 
       - name: Replace members section in members.md
         run: |
-          readme_content=$(cat _pagess/members.md)
+          readme_content=$(cat _pages/members.md)
           members_content=$(cat members.md)
   
           echo "$readme_content" | awk -v new_content="$members_content" '
