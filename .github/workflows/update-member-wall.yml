@@ -1,0 +1,72 @@
+name: Update Member Wall
+
+on:
+  # 定时任务 - 每周运行一次 (每周一的午夜)
+  schedule:
+    - cron: '0 0 * * 1'  # 每周一 UTC 时间 0:00 运行
+
+  # 允许手动触发
+  workflow_dispatch:
+
+jobs:
+  update-member-wall:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2
+
+      - name: Install jq
+        run: sudo apt-get install jq
+
+      - name: Get organization members
+        id: get-members
+        run: |
+          # 调用 GitHub API 获取组织成员信息
+          members=$(curl -H "Authorization: token ${{ secrets.PAT_TOKEN }}" https://api.github.com/orgs/CompPsyUnion/members)
+
+          # 提取成员登录名、头像URL
+          echo "$members" | jq -r '.[] | {login: .login, avatar_url: .avatar_url}' > members.json
+
+      - name: Generate member wall
+        id: generate-wall
+        run: |
+          logins=$(jq -r '.login' members.json)
+          avatars=$(jq -r '.avatar_url' members.json)
+
+          echo "|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|" > member_wall.md
+          echo "|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|" >> member_wall.md
+
+          row=""
+          for avatar in $avatars; do
+            row="$row|<img height='48' width='48' src='$avatar'>"
+            if [[ $(echo $row | awk '{print NF-1}') -eq 6 ]]; then
+              echo "$row|" >> member_wall.md
+              row=""
+            fi
+          done
+          if [[ -n "$row" ]]; then
+            echo "$row|" >> member_wall.md
+          fi
+
+          row=""
+          for login in $logins; do
+            row="$row|[@$login](https://github.com/$login)"
+            if [[ $(echo $row | awk '{print NF-1}') -eq 6 ]]; then
+              echo "$row|" >> member_wall.md
+              row=""
+            fi
+          done
+          if [[ -n "$row" ]]; then
+            echo "$row|" >> member_wall.md
+          fi
+
+      - name: Update README
+        run: |
+          sed -i '/<!-- START MEMBER WALL -->/,/<!-- END MEMBER WALL -->/c\<!-- START MEMBER WALL -->\n'$(cat member_wall.md)'\n<!-- END MEMBER WALL -->' README2.md
+
+      - name: Commit and push changes
+        run: |
+          git add README2.md
+          git commit -m "Update member wall"
+          git push
