@@ -12,50 +12,60 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Install jq
         run: sudo apt-get install jq
 
+      - name: Get organization teams
+        id: get-teams
+        run: |
+          teams=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/orgs/CompPsyUnion/teams)
+          echo "$teams" | jq -r '.[] | {name: .name, id: .id}' > teams.json
+
       - name: Get organization members
         id: get-members
         run: |
-          members=$(curl -H "Authorization: token ${{ secrets.PAT_TOKEN }}" https://api.github.com/orgs/CompPsyUnion/members)
+          members=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/orgs/CompPsyUnion/members)
           echo "$members" | jq -r '.[] | {login: .login, avatar_url: .avatar_url}' > members.json
 
       - name: Generate member wall
         id: generate-wall
         run: |
-          logins=$(jq -r '.login' members.json)
-          avatars=$(jq -r '.avatar_url' members.json)
+          declare -A team_members
+
+          while read -r team; do
+            team_name=$(echo "$team" | jq -r '.name')
+            team_id=$(echo "$team" | jq -r '.id')
+            team_members["$team_name"]=""
+          done < <(jq -c '.[]' teams.json)
+
+          for member in $(jq -c '.[]' members.json); do
+            login=$(echo "$member" | jq -r '.login')
+            avatar_url=$(echo "$member" | jq -r '.avatar_url')
+
+            user_teams=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/orgs/CompPsyUnion/members/$login/teams")
+
+            for team in $(echo "$user_teams" | jq -c '.[]'); do
+              team_name=$(echo "$team" | jq -r '.name')
+              team_members["$team_name"]+="$login|<img height='48' width='48' src='$avatar_url'>|"
+            done
+          done
 
           echo "# Organization Members" > members.md
-          echo "|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|" >> members.md
-          echo "|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|" >> members.md
 
-          row=""
-          for avatar in $avatars; do
-            row="$row|<img height='48' width='48' src='$avatar'>"
-            if [[ $(echo $row | awk '{print NF-1}') -eq 6 ]]; then
-              echo "$row|" >> members.md
-              row=""
-            fi
+          for team in "${!team_members[@]}"; do
+            echo "## $team" >> members.md
+            echo "|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|" >> members.md
+            echo "|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|" >> members.md
+            
+            # Generate rows for members
+            members_row="${team_members[$team]}"
+            while [[ ! -z "$members_row" ]]; do
+              echo "${members_row:0:6}" >> members.md
+              members_row="${members_row:6}"
+            done
           done
-          if [[ -n "$row" ]]; then
-            echo "$row|" >> members.md
-          fi
-
-          row=""
-          for login in $logins; do
-            row="$row|[@$login](https://github.com/$login)"
-            if [[ $(echo $row | awk '{print NF-1}') -eq 6 ]]; then
-              echo "$row|" >> members.md
-              row=""
-            fi
-          done
-          if [[ -n "$row" ]]; then
-            echo "$row|" >> members.md
-          fi
 
       - name: Configure Git
         run: |
