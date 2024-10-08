@@ -18,13 +18,22 @@ membersData.forEach(member => {
     const login = member.login;
     const avatarUrl = member.avatar_url;
 
-    const userTeamsResponse = execSync(`curl -H "Authorization: token ${process.env.PAT_TOKEN}" "https://api.github.com/orgs/CompPsyUnion/members/${login}/teams"`);
-    const userTeams = JSON.parse(userTeamsResponse);
+    try {
+        const userTeamsResponse = execSync(`curl -s -H "Authorization: token ${process.env.PAT_TOKEN}" "https://api.github.com/orgs/CompPsyUnion/members/${login}/teams"`);
+        const userTeams = JSON.parse(userTeamsResponse);
 
-    userTeams.forEach(team => {
-        const teamName = team.name;
-        teamMembers[teamName].push(`${login}|<img height='48' width='48' src='${avatarUrl}'>|`);
-    });
+        // Ensure userTeams is an array before processing
+        if (Array.isArray(userTeams)) {
+            userTeams.forEach(team => {
+                const teamName = team.name;
+                teamMembers[teamName].push(`${login}|<img height='48' width='48' src='${avatarUrl}'>|`);
+            });
+        } else {
+            console.error(`Expected an array but got: ${JSON.stringify(userTeams)}`);
+        }
+    } catch (error) {
+        console.error(`Error fetching teams for ${login}: ${error.message}`);
+    }
 });
 
 // Generate the members.md file
