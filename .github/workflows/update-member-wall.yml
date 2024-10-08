@@ -19,12 +19,12 @@ jobs:
 
       - name: Update members
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           #!/usr/bin/env node
 
           const fetch = require('node-fetch');
-          const { execSync } = require('child_process');
+          const fs = require('fs');
 
           async function fetchTeams() {
             const response = await fetch(`https://api.github.com/orgs/CompPsyUnion/teams`, {
@@ -80,7 +80,7 @@ jobs:
 
             for (const team in teamMembers) {
               content += `## ${team}\n`;
-              content += "|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|\n`;
+              content += "|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|\n";
               content += "|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|\n";
 
               const membersRow = teamMembers[team];
@@ -90,7 +90,6 @@ jobs:
               }
             }
 
-            const fs = require('fs');
             fs.writeFileSync('members.md', content);
           }
 
