@@ -1,5 +1,5 @@
-const fetch = require('node-fetch');
-const fs = require('fs');
+import fetch from 'node-fetch';
+import fs from 'fs';
 
 async function fetchTeams() {
   const response = await fetch(`https://api.github.com/orgs/CompPsyUnion/teams`, {
@@ -8,6 +8,12 @@ async function fetchTeams() {
       'Accept': 'application/vnd.github.v3+json',
     },
   });
+  
+  if (!response.ok) {
+    console.error(`Error fetching teams: ${response.statusText}`);
+    return [];
+  }
+
   return await response.json();
 }
 
@@ -18,6 +24,12 @@ async function fetchMembers() {
       'Accept': 'application/vnd.github.v3+json',
     },
   });
+
+  if (!response.ok) {
+    console.error(`Error fetching members: ${response.statusText}`);
+    return [];
+  }
+
   return await response.json();
 }
 
@@ -31,10 +43,9 @@ async function fetchUserTeams(login) {
   
   const data = await response.json();
   
-  // 检查返回的响应是否是一个数组
   if (!Array.isArray(data)) {
     console.error(`Error fetching teams for ${login}:`, data);
-    return []; // 如果不是数组，返回空数组以防止错误
+    return [];
   }
   
   return data;
