@@ -1,9 +1,9 @@
 name: Update Members Wall
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # 手动触发
   schedule:
-    - cron: '0 0 * * 1'
+    - cron: '0 0 * * 1' # 每周一触发
 
 jobs:
   update-members:
@@ -30,8 +30,17 @@ jobs:
 
       - name: Replace members section in README
         run: |
+          # 读取 README.md 和 members.md 文件内容
+          readme_content=$(cat README.md)
           members_content=$(cat members.md)
-          perl -i -0777 -pe 's/<!--START_SECTION:members-->.*<!--END_SECTION:members-->/<!--START_SECTION:members--> \n'"$members_content"'\n<!--END_SECTION:members-->/s' README.md
+
+          # 使用 awk 替换特定的部分
+          echo "$readme_content" | awk -v new_content="$members_content" '
+            BEGIN { found=0 }
+            /<!--START_SECTION:members-->/ { print; found=1; next }
+            /<!--END_SECTION:members-->/ { print new_content; found=0 }
+            !found { print }
+          ' > README.md
 
       - name: Commit and Push changes
         run: |
