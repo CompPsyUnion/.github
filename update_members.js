@@ -46,15 +46,17 @@ async function main() {
 
     const maxMembersPerRow = 10; // Show a maximum of 10 members per row
 
-    // Create the avatar and username rows
+    // Loop through the members and create the table rows
     for (let i = 0; i < members.length; i += maxMembersPerRow) {
       const rowMembers = members.slice(i, i + maxMembersPerRow); // Get the next set of members
-
+      
       // Create a row for avatars
-      content += '|'; // Start of a new row for avatars
+      content += '|'; // Start of a new row
       for (const member of rowMembers) {
         const avatar_url = member.avatar_url;
-        content += ` ![${member.login}](${avatar_url}?s=36) |`; // Using Markdown syntax for images
+
+        // Use HTML <img> tag to control image size
+        content += ` <img src="${avatar_url}" width="36" height="36" /> |`;
       }
       content += '\n'; // End of the row for avatars
 
@@ -63,9 +65,11 @@ async function main() {
       for (const member of rowMembers) {
         const login = member.login;
         const link = `https://github.com/${login}`;
-        content += ` [@${login}](${link}) |`; // Using Markdown syntax for links
+
+        // Add the username below the avatar
+        content += ` [@${login}](${link}) |`;
       }
-      content += '\n\n'; // End of the row for usernames
+      content += '\n\n'; // End of the row for usernames, separate sections with newlines
     }
 
     content += '\n'; // Separate sections with newlines
