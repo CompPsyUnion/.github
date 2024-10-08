@@ -42,37 +42,35 @@ async function main() {
     const membersUrl = team.members_url.replace("{/member}", ""); // Remove the placeholder
     const members = await fetchTeamMembers(membersUrl);
 
-    content += `### ${team.name}\n\n`;
+    content += `### ${team.name}\n\n`; // Markdown for headings
+    content += '| :construction_worker: | :construction_worker: | :construction_worker: |\n';
+    content += '|:-------------------:|:-------------------:|:-------------------:|\n';
 
-    const maxMembersPerRow = 10; // Limit to a maximum of 10 members per row
-    const memberCount = Math.min(members.length, maxMembersPerRow); // Limit to actual member count
+    const maxMembersPerRow = 3; // Show 3 members per row for better layout
 
-    // Markdown table header
-    content += '| :construction_worker: '.repeat(memberCount) + '|\n';
-    content += '|:-------------------:'.repeat(memberCount) + '|\n';
-
-    const avatarsRow = [];
-    const namesRow = [];
-    
-    // Populate the table with member data
-    for (let i = 0; i < memberCount; i++) {
-      const member = members[i];
-      const login = member.login;
-      const avatar_url = member.avatar_url;
-      const link = `https://github.com/${login}`;
-      
-      // Use Markdown syntax for images and links
-      avatarsRow.push(`![${login}](${avatar_url})`); // Using Markdown syntax for images
-      namesRow.push(`[@${login}](${link})`); // Using Markdown syntax for links
+    for (let i = 0; i < members.length; i += maxMembersPerRow) {
+      content += '<tr>\n';
+      for (let j = 0; j < maxMembersPerRow; j++) {
+        if (i + j < members.length) {
+          const member = members[i + j];
+          const login = member.login;
+          const avatar_url = member.avatar_url;
+          const link = `https://github.com/${login}`;
+          
+          // Image size reduced to 36x36 to make it more compact
+          content += `| ![${login}](${avatar_url}?s=36) | [@${login}](${link}) `;
+        } else {
+          content += '|   |   '; // Empty cells if the row is not full
+        }
+      }
+      content += '\n'; // New row in the table
     }
 
-    content += '|' + avatarsRow.join('|') + '|\n'; // Join avatars row with pipes
-    content += '|' + namesRow.join('|') + '|\n';   // Join names row with pipes
-
-    content += '\n'; // Add a new line after each team for better readability
+    content += '\n'; // Separate tables with newlines
   }
 
-  fs.writeFileSync('README.md', content);
+  // Write members section to members.md
+  fs.writeFileSync('members.md', content);
 }
 
 main().catch(err => {
