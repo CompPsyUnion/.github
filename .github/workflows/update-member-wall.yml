@@ -17,6 +17,10 @@ jobs:
         with:
           node-version: '21'
 
+      - name: Install dependencies
+        run: |
+          npm install node-fetch
+
       - name: Create update_members.js
         run: |
           echo "const fetch = require('node-fetch');" > update_members.js
