@@ -49,7 +49,7 @@ async function main() {
     const maxMembersPerRow = 3; // Show 3 members per row for better layout
 
     for (let i = 0; i < members.length; i += maxMembersPerRow) {
-      content += '<tr>\n';
+      content += '|'; // Start of a new row
       for (let j = 0; j < maxMembersPerRow; j++) {
         if (i + j < members.length) {
           const member = members[i + j];
@@ -57,16 +57,16 @@ async function main() {
           const avatar_url = member.avatar_url;
           const link = `https://github.com/${login}`;
           
-          // Image size reduced to 36x36 to make it more compact
-          content += `| ![${login}](${avatar_url}?s=36) | [@${login}](${link}) `;
+          // Image with size query parameter ?s=36 for reduced size
+          content += ` ![${login}](${avatar_url}?s=36) [@${login}](${link}) |`;
         } else {
-          content += '|   |   '; // Empty cells if the row is not full
+          content += '   |'; // Empty cell if row is incomplete
         }
       }
-      content += '\n'; // New row in the table
+      content += '\n'; // End of row
     }
 
-    content += '\n'; // Separate tables with newlines
+    content += '\n'; // Separate sections with newlines
   }
 
   // Write members section to members.md
