@@ -30,7 +30,7 @@ jobs:
 
       - name: Replace members section in members.md
         run: |
-          readme_content=$(cat _posts/members.md)
+          readme_content=$(cat _pagess/members.md)
           members_content=$(cat members.md)
   
           echo "$readme_content" | awk -v new_content="$members_content" '
@@ -38,7 +38,7 @@ jobs:
             /<!--START_SECTION:members-->/ { print; found=1; next }
             /<!--END_SECTION:members-->/ { print new_content; found=0 }
             !found { print }
-          ' > _posts/members.md
+          ' > _pages/members.md
   
       - name: Commit and Push changes
         run: |
