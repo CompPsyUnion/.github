@@ -17,6 +17,10 @@ jobs:
         with:
           node-version: '21'
 
+      - name: Install dependencies
+        run: |
+          npm install node-fetch
+
       - name: Update members
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
