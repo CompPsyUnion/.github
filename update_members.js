@@ -44,8 +44,8 @@ async function main() {
 
     content += `## ${team.name}\n`;
     
-    // Determine the number of columns based on the number of members
-    const columns = Math.min(members.length, 6);
+    // Define the number of columns
+    const columns = 6; // Fixed number of columns for table layout
     const rows = Math.ceil(members.length / columns);
     
     // Add the header for the Markdown table
@@ -67,8 +67,9 @@ async function main() {
           row.push(''); // Empty cell for any remaining empty spots
         }
       }
-      content += '|' + row.join('|') + '|\n';
+      content += '|' + row.join('|') + '|\n'; // Join row content with pipes
     }
+    content += '\n'; // Add a new line after each team for better readability
   }
 
   fs.writeFileSync('members.md', content);
