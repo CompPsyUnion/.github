@@ -43,10 +43,11 @@ async function main() {
     const members = await fetchTeamMembers(membersUrl);
 
     content += `### ${team.name}\n\n`; // Markdown for headings
+    const maxMembersPerRow = 3; // Show 3 members per row for better layout
+
+    // Add a header row for the team
     content += '| :construction_worker: | :construction_worker: | :construction_worker: |\n';
     content += '|:-------------------:|:-------------------:|:-------------------:|\n';
-
-    const maxMembersPerRow = 3; // Show 3 members per row for better layout
 
     for (let i = 0; i < members.length; i += maxMembersPerRow) {
       content += '|'; // Start of a new row
@@ -57,8 +58,8 @@ async function main() {
           const avatar_url = member.avatar_url;
           const link = `https://github.com/${login}`;
           
-          // Use the ?s=48 parameter to make sure all images have the same size
-          content += ` ![${login}](${avatar_url}?s=48) [@${login}](${link}) |`;
+          // Using HTML <img> tag to control image size
+          content += ` <img src="${avatar_url}" width="36" height="36" /> [@${login}](${link}) |`;
         } else {
           content += '   |'; // Empty cell if row is incomplete
         }
