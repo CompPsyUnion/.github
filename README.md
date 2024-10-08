@@ -18,5 +18,8 @@
 
 ## 组织历届成员
 
-[如何生成该社团墙](https://blog.yiming1234.cn)
+该成员墙通过该仓库的工作流进行生成，每周一定时更新
 
+<!--START_SECTION:members-->
+这里会被自动替换成成员列表
+<!--END_SECTION:members-->
