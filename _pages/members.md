@@ -6,8 +6,6 @@ category: Jekyll
 layout: post
 ---
 
-## 组织成员信息
-
 <!--START_SECTION:members-->
 ### Java
 
