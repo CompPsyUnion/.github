@@ -1,19 +1,19 @@
 const fs = require('fs');
 const { execSync } = require('child_process');
 
-// Read teams.json and members.json
+// 读取 teams.json 和 members.json 文件
 const teamsData = JSON.parse(fs.readFileSync('teams.json', 'utf8'));
 const membersData = JSON.parse(fs.readFileSync('members.json', 'utf8'));
 
-// Create an object to hold team members
+// 创建一个对象来存储团队成员
 const teamMembers = {};
 
-// Initialize team members object
+// 初始化团队成员对象
 teamsData.forEach(team => {
     teamMembers[team.name] = [];
 });
 
-// Populate team members
+// 填充团队成员
 membersData.forEach(member => {
     const login = member.login;
     const avatarUrl = member.avatar_url;
@@ -22,10 +22,11 @@ membersData.forEach(member => {
         const userTeamsResponse = execSync(`curl -s -H "Authorization: token ${process.env.PAT_TOKEN}" "https://api.github.com/orgs/CompPsyUnion/members/${login}/teams"`);
         const userTeams = JSON.parse(userTeamsResponse);
 
-        // Ensure userTeams is an array before processing
+        // 确保 userTeams 是数组，然后处理
         if (Array.isArray(userTeams)) {
             userTeams.forEach(team => {
                 const teamName = team.name;
+                // 生成头像和昵称格式
                 teamMembers[teamName].push(`${login}|<img height='48' width='48' src='${avatarUrl}'>|`);
             });
         } else {
@@ -36,32 +37,32 @@ membersData.forEach(member => {
     }
 });
 
-// Generate the members.md file
+// 生成 members.md 文件内容
 let content = "# Organization Members\n";
 
 for (const team in teamMembers) {
     content += `## ${team}\n`;
 
     const membersList = teamMembers[team];
-    const rows = Math.ceil(membersList.length / 6); // Calculate number of rows needed
+    const rows = Math.ceil(membersList.length / 6); // 计算所需的行数
+
+    // 添加表格标题行
+    content += "|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|\n";
+    content += "|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|\n";
 
     for (let i = 0; i < rows; i++) {
-        content += "|"; // Start a new row
-        for (let j = 0; j < 6; j++) { // Up to 6 members per row
+        content += "|"; // 开始新行
+        for (let j = 0; j < 6; j++) { // 每行最多 6 个成员
             const memberIndex = i * 6 + j;
             if (memberIndex < membersList.length) {
                 content += membersList[memberIndex];
             } else {
-                content += "|"; // Empty cell for non-existing members
+                content += "|"; // 如果没有成员则留空
             }
         }
-        content += "\n"; // End the row
+        content += "\n"; // 行结束
     }
-
-    // Add table headers for the current team
-    content += "|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|\n";
-    content += "|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|\n";
 }
 
-// Write to members.md
+// 写入 members.md 文件
 fs.writeFileSync('members.md', content);
