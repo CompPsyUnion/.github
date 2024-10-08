@@ -36,32 +36,34 @@ async function fetchTeamMembers(membersUrl) {
 async function main() {
   const teams = await fetchTeams();
   
-  let content = ""; // 去掉大标题，不需要初始的标题文本
+  let content = ""; // Initialize content for the Markdown file
 
   for (const team of teams) {
     const membersUrl = team.members_url.replace("{/member}", ""); // Remove the placeholder
     const members = await fetchTeamMembers(membersUrl);
 
-    content += `### ${team.name}\n`;
+    content += `### ${team.name}\n\n`;
 
-    const maxMembersPerRow = 10;
-    const memberCount = members.length < maxMembersPerRow ? members.length : maxMembersPerRow; // Limit to actual member count
+    const maxMembersPerRow = 10; // Limit to a maximum of 10 members per row
+    const memberCount = Math.min(members.length, maxMembersPerRow); // Limit to actual member count
 
-    // Add the header for the Markdown table based on actual member count
-    content += '|:construction_worker:'.repeat(memberCount) + '|\n';
+    // Markdown table header
+    content += '| :construction_worker: '.repeat(memberCount) + '|\n';
     content += '|:-------------------:'.repeat(memberCount) + '|\n';
 
     const avatarsRow = [];
     const namesRow = [];
     
-    // Populate the table with member data, but limit to actual member count
+    // Populate the table with member data
     for (let i = 0; i < memberCount; i++) {
       const member = members[i];
       const login = member.login;
       const avatar_url = member.avatar_url;
       const link = `https://github.com/${login}`;
-      avatarsRow.push(`<img height='48' width='48' src='${avatar_url}'>`);
-      namesRow.push(`[@${login}](${link})`);
+      
+      // Use Markdown syntax for images and links
+      avatarsRow.push(`![${login}](${avatar_url})`); // Using Markdown syntax for images
+      namesRow.push(`[@${login}](${link})`); // Using Markdown syntax for links
     }
 
     content += '|' + avatarsRow.join('|') + '|\n'; // Join avatars row with pipes
@@ -70,7 +72,7 @@ async function main() {
     content += '\n'; // Add a new line after each team for better readability
   }
 
-  fs.writeFileSync('members.md', content);
+  fs.writeFileSync('README.md', content);
 }
 
 main().catch(err => {
