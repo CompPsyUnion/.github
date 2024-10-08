@@ -29,7 +29,6 @@ jobs:
           logins=$(jq -r '.login' members.json)
           avatars=$(jq -r '.avatar_url' members.json)
 
-          # 初始化表格
           echo "# Organization Members" > members.md
           echo "|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|" >> members.md
           echo "|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|" >> members.md
@@ -57,6 +56,11 @@ jobs:
           if [[ -n "$row" ]]; then
             echo "$row|" >> members.md
           fi
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: Commit and push changes
         run: |
