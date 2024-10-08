@@ -1,79 +1,42 @@
-name: Update Member Wall
+name: Update Organization Members
 
 on:
   schedule:
-    - cron: '0 0 * * 1'  # 每周一 UTC 时间 0:00 运行
-
-  workflow_dispatch:
+    - cron: '0 0 * * 0'  # 每周日运行
+  workflow_dispatch:  # 允许手动触发
 
 jobs:
-  update-member-wall:
+  update_members:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '21'
+
       - name: Install jq
         run: sudo apt-get install jq
 
-      - name: Get organization teams
-        id: get-teams
+      - name: Fetch teams and members
         run: |
-          teams=$(curl -H "Authorization: token ${{ secrets.PAT_TOKEN }}" https://api.github.com/orgs/CompPsyUnion/teams)
-          echo "$teams" | jq -r '.[] | {name: .name, id: .id}' > teams.json
+          curl -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
+            "https://api.github.com/orgs/CompPsyUnion/teams" > teams.json
+          curl -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
+            "https://api.github.com/orgs/CompPsyUnion/members" > members.json
 
-      - name: Get organization members
-        id: get-members
-        run: |
-          members=$(curl -H "Authorization: token ${{ secrets.PAT_TOKEN }}" https://api.github.com/orgs/CompPsyUnion/members)
-          echo "$members" | jq -r '.[] | {login: .login, avatar_url: .avatar_url}' > members.json
-
-      - name: Generate member wall
-        id: generate-wall
-        run: |
-          declare -A team_members
-
-          while read -r team; do
-            team_name=$(echo "$team" | jq -r '.name')
-            team_id=$(echo "$team" | jq -r '.id')
-            team_members["$team_name"]=""
-          done < <(jq -c '.[]' teams.json)
-
-          for member in $(jq -c '.[]' members.json); do
-            login=$(echo "$member" | jq -r '.login')
-            avatar_url=$(echo "$member" | jq -r '.avatar_url')
-
-            user_teams=$(curl -H "Authorization: token ${{ secrets.PAT_TOKEN }}" "https://api.github.com/orgs/CompPsyUnion/members/$login/teams")
-
-            for team in $(echo "$user_teams" | jq -c '.[]'); do
-              team_name=$(echo "$team" | jq -r '.name')
-              team_members["$team_name"]+="$login|<img height='48' width='48' src='$avatar_url'>|"
-            done
-          done
-
-          echo "# Organization Members" > members.md
-
-          for team in "${!team_members[@]}"; do
-            echo "## $team" >> members.md
-            echo "|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|:construction_worker:|" >> members.md
-            echo "|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|:-------------------:|" >> members.md
-            
-            # Generate rows for members
-            members_row="${team_members[$team]}"
-            while [[ ! -z "$members_row" ]]; do
-              echo "${members_row:0:6}" >> members.md
-              members_row="${members_row:6}"
-            done
-          done
-
-      - name: Configure Git
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      - name: Run member update script
+        run: node update_members.js
 
       - name: Commit and push changes
         run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
           git add members.md
-          git commit -m "Update members wall"
+          git commit -m "Update members wall" || echo "No changes to commit"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
