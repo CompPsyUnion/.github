@@ -46,18 +46,18 @@ async function main() {
     
     // Set the maximum number of members per row
     const maxMembersPerRow = 10; 
-    const rows = Math.ceil(members.length / maxMembersPerRow);
-    
+
     // Add the header for the Markdown table
     content += '|:construction_worker:'.repeat(maxMembersPerRow) + '|\n';
     content += '|:-------------------:'.repeat(maxMembersPerRow) + '|\n';
 
     // Populate the table with member data
-    for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
+    for (let i = 0; i < members.length; i += maxMembersPerRow) {
       const avatarsRow = [];
       const namesRow = [];
-      for (let colIndex = 0; colIndex < maxMembersPerRow; colIndex++) {
-        const memberIndex = rowIndex * maxMembersPerRow + colIndex;
+      
+      for (let j = 0; j < maxMembersPerRow; j++) {
+        const memberIndex = i + j;
         if (memberIndex < members.length) {
           const member = members[memberIndex];
           const login = member.login;
@@ -70,6 +70,7 @@ async function main() {
           namesRow.push('');   // Empty cell for names
         }
       }
+
       content += '|' + avatarsRow.join('|') + '|\n'; // Join avatars row with pipes
       content += '|' + namesRow.join('|') + '|\n';   // Join names row with pipes
     }
