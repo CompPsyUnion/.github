@@ -1,13 +1,14 @@
 name: Update Members Wall
 
 on:
-  workflow_dispatch: # 手动触发
+  workflow_dispatch:
   schedule:
-    - cron: '0 0 * * 1' # 每周一触发
+    - cron: '0 0 * * 1'
 
 jobs:
   update-members:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -27,10 +28,15 @@ jobs:
         run: |
           node update_members.js
 
-      - name: Commit and Push
+      - name: Replace members section in README
+        run: |
+          members_content=$(cat members.md)
+          sed -i '/<!--START_SECTION:members-->/,/<!--END_SECTION:members-->/c\<!--START_SECTION:members-->\n'"$members_content"'\n<!--END_SECTION:members-->' README.md
+
+      - name: Commit and Push changes
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          git add members.md
-          git commit -m "Update members wall"
+          git add README.md
+          git commit -m "Update members wall in README"
           git push
