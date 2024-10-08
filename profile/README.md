@@ -1,6 +1,6 @@
 Hi👋 , we're Computer Psycho Union, UNNC!  
 👋 你好，我们是宁波诺丁汉大学计算机爱好者协会！  
-点击[此处](https://github.com/CompPsyUnion/.github)查看详细的信息
+点击[此处](https://cpu.诺丁汉原神大学.xyz)查看详细的信息
 
 ![CPU_HomePage_View](https://komarev.com/ghpvc/?username=comppsyunion&label=Profile%20views&color=0e75b6&style=flat)
 
