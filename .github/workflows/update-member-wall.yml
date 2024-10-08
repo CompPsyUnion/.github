@@ -22,7 +22,7 @@ jobs:
         run: |
           npm install node-fetch@latest
 
-      - name: Update members
+      - name: Generate members list
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
@@ -31,9 +31,9 @@ jobs:
       - name: Replace members section in README
         run: |
           readme_content=$(cat README.md)
-          updated_members_content=$(node update_members.js)
+          members_content=$(cat members.md)
 
-          echo "$readme_content" | awk -v new_content="$updated_members_content" '
+          echo "$readme_content" | awk -v new_content="$members_content" '
             BEGIN { found=0 }
             /<!--START_SECTION:members-->/ { print; found=1; next }
             /<!--END_SECTION:members-->/ { print new_content; found=0 }
