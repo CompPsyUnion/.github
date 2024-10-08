@@ -31,7 +31,7 @@ jobs:
       - name: Replace members section in README
         run: |
           members_content=$(cat members.md)
-          sed -i '/<!--START_SECTION:members-->/,/<!--END_SECTION:members-->/c\<!--START_SECTION:members-->\n'"$members_content"'\n<!--END_SECTION:members-->' README.md
+          perl -i -0777 -pe 's/<!--START_SECTION:members-->.*<!--END_SECTION:members-->/<!--START_SECTION:members--> \n'"$members_content"'\n<!--END_SECTION:members-->/s' README.md
 
       - name: Commit and Push changes
         run: |
