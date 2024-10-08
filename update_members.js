@@ -36,7 +36,7 @@ async function fetchTeamMembers(membersUrl) {
 async function main() {
   const teams = await fetchTeams();
   
-  let content = "# Organization Members\n";
+  let content = ""; // 去掉大标题，不需要初始的标题文本
 
   for (const team of teams) {
     const membersUrl = team.members_url.replace("{/member}", ""); // Remove the placeholder
