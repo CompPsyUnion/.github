@@ -57,8 +57,8 @@ async function main() {
           const avatar_url = member.avatar_url;
           const link = `https://github.com/${login}`;
           
-          // Image with size query parameter ?s=36 for reduced size
-          content += ` ![${login}](${avatar_url}?s=36) [@${login}](${link}) |`;
+          // Use the ?s=48 parameter to make sure all images have the same size
+          content += ` ![${login}](${avatar_url}?s=48) [@${login}](${link}) |`;
         } else {
           content += '   |'; // Empty cell if row is incomplete
         }
