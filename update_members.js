@@ -47,17 +47,16 @@ async function main() {
     const maxMembersPerRow = 10; // Show a maximum of 10 members per row
 
     // Add a header row for the team
-    content += '| ' + ':construction_worker: '.repeat(maxMembersPerRow) + '|\n';
-    content += '|:' + ':---:|'.repeat(maxMembersPerRow) + '\n';
+    content += '| ' + ':construction_worker: '.repeat(Math.min(members.length, maxMembersPerRow)) + '|\n';
+    content += '|:' + ':---:|'.repeat(Math.min(members.length, maxMembersPerRow)) + '\n';
 
     for (let i = 0; i < members.length; i += maxMembersPerRow) {
-      content += '|'; // Start of a new row
+      content += '|'; // Start of a new row for avatars
       for (let j = 0; j < maxMembersPerRow; j++) {
         if (i + j < members.length) {
           const member = members[i + j];
           const login = member.login;
           const avatar_url = member.avatar_url;
-          const link = `https://github.com/${login}`;
           
           // Using HTML <img> tag to control image size
           content += ` <img src="${avatar_url}" width="36" height="36" /> |`;
@@ -65,7 +64,7 @@ async function main() {
           content += '   |'; // Empty cell if row is incomplete
         }
       }
-      content += '\n'; // End of row
+      content += '\n'; // End of row for avatars
 
       // Add the usernames in the next row
       content += '|'; // Start of username row
