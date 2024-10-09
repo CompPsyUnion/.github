@@ -1,6 +1,9 @@
-Hi👋 , we're Computer Psycho Union, UNNC!  
-👋 你好，我们是宁波诺丁汉大学计算机爱好者协会！  
+Hi👋 , we're Computer Psycho Union, UNNC!
+👋 你好，我们是宁波诺丁汉大学计算机爱好者协会！
+
 ![CPU_HomePage_View](https://komarev.com/ghpvc/?username=comppsyunion&label=Profile%20views&color=0e75b6&style=flat)
+[![Jekyll Themes](https://img.shields.io/badge/featured%20on-JekyllThemes-red.svg)](https://jekyll-themes.com/jekyll-gitbook)
+
 ## Touch us / 联系我们  
 📮Email: computerpsychounion@nottingham.edu.cn  
 💬WeChat: 宁诺CPU  
