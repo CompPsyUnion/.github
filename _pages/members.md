@@ -6,6 +6,12 @@ category: Jekyll
 layout: post
 ---
 
+该页面根据Github Organization的Teams进行生成
+
+与实际分组可能存在出入，Teams变动需要私信管理员
+
+如果没有在社员墙上找到你的账号，可能是因为你还没有加入任意一个Teams
+
 <!--START_SECTION:members-->
 ### Admin
 
@@ -26,5 +32,6 @@ layout: post
 
 
 ### P.S.
-该社员墙通过工作流进行定时更新。
+
+社员墙通过工作流每周一进行定时更新。
 <!--END_SECTION:members-->
