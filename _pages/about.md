@@ -18,11 +18,15 @@ The CPU Association is a student association of Computer Science students which 
 
 ### 2024届主席团成员
 
-社长：丁子芯
+社长：丁子芯，张烜然
 
-副社长：张烜然，刘柏岑
+副社长：刘柏岑
 
 技术部部长：徐安植
 
-宣传部部长：苏懿童
+技术部副部长：王逸鸣
+
+宣传部部长：苏懿童 
+
+宣传部副部长：刘凯昀
 
