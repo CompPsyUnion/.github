@@ -12,14 +12,14 @@ Hi👋 , we're Computer Psycho Union, UNNC!
 
 
 ## On-site Activities / 校内活动
-  - 技术分享交流会 Tech Sharing Seminar   
+  - 技术分享交流会 CPU Tech Forum  
     Open to all CS Students, [CLICK HERE](https://forms.office.com/r/iU3z5BhiBf) to subcribe the information(UNNC Account required).  
-    ⚠️Tips: Seminars will be given in Chinese.  
+    ⚠️Tips: Forums will be given in Chinese.  
     面向所有计算机系学生开放，[点击此处](https://forms.office.com/r/iU3z5BhiBf)订阅我们的邮件通知。  
   - CS学生大讲堂 CS Student Public Lecture  
     For Year 1 Gaokao Student, there will be 2 blue SPDPO credit. 对于大一年级学生将会有2蓝色SPDPO学分。  
   - 趣味编程大赛（程序设计比赛） Programming Competition  
-    For Year 1 Gaokao Student, there will be SPDPO credits. 对于大一年级学生将会有SPDPO学分。  
+    Problems will be given in English. For Year 1 Gaokao Student, there will be SPDPO credits. 问题将以英文方式呈现。对于大一年级学生将会有SPDPO学分。  
   - 趣味CTF网安竞赛 CTF Competition  
     For Year 1 Gaokao Student, there will be SPDPO credits. 对于大一年级学生将会有SPDPO学分。  
   - LEGO EV3 机器人活动 LEGO EV3 robotics activities  
