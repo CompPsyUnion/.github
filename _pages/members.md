@@ -32,6 +32,5 @@ layout: post
 
 
 ### P.S.
-
-社员墙通过工作流每周一进行定时更新。
+该社员墙通过工作流进行定时更新。
 <!--END_SECTION:members-->
