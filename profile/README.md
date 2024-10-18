@@ -1,1 +1,1 @@
-![Metrics](https://metrics.lecoq.io/CompPsyUnion)
+<img src="/github-metrics.svg" alt="Metrics" width="100%">
