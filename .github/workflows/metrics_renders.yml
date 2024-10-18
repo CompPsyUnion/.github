@@ -38,20 +38,8 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
           
       - uses: lowlighter/metrics@latest
         with:
           output_action: none
 
-      - uses: lowlighter/metrics@latest
-        run: |
-          set +e
-          git checkout main
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          sudo mv /metrics_renders/* ./
-          git add --all
-          git commit -m "chore: push metrics"
-          git push
