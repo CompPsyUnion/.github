@@ -53,7 +53,20 @@ jobs:
           plugin_people: yes
           plugin_people_limit: 24
           plugin_people_size: 28
-          plugin_people_types: members, followed
+          plugin_people_types: members
+
+      - name: People
+        uses: lowlighter/metrics@latest
+        with:
+          filename: people.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: CompPsyUnion
+          template: classic
+          base: ""
+          plugin_people: yes
+          plugin_people_limit: 24
+          plugin_people_size: 28
+          plugin_people_types: followers
 
       - name: Activity
         uses: lowlighter/metrics@latest
