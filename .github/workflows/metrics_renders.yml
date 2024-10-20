@@ -53,7 +53,7 @@ jobs:
           plugin_people: yes
           plugin_people_limit: 24
           plugin_people_size: 28
-          plugin_people_types: members,followers
+          plugin_people_types: members, followers
 
       - name: Activity
         uses: lowlighter/metrics@latest
@@ -69,6 +69,18 @@ jobs:
           plugin_activity_limit: 5
           plugin_activity_load: 300
           plugin_activity_visibility: all
+
+      - name: Crypto Metrics
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.plugin.crypto.svg
+          token: NOT_NEEDED
+          base: ""
+          plugin_crypto: yes
+          plugin_crypto_id: handsomeLBC
+          plugin_crypto_vs_currency: usd
+          plugin_crypto_days: 1
+          plugin_crypto_precision: 2
 
       - name: Checkout repository
         uses: actions/checkout@v4
