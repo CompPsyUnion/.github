@@ -1,3 +1,2 @@
-<picture>
-  <img src="/github-metrics.svg" alt="Metrics">
-</picture>
+| ![Base](/base.svg) ![Mostused](/mostused.svg) ![People](/people.svg) | ![Activity](/activity.svg) |
+|:-:|:-:|
