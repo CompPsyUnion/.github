@@ -15,7 +15,7 @@ jobs:
       - name: Base
         uses: lowlighter/metrics@latest
         with:
-          filename: base.svg
+          filename: /picture/base.svg
           token: ${{ secrets.METRICS_TOKEN }}
           user: CompPsyUnion
           template: classic
@@ -28,7 +28,7 @@ jobs:
       - name: Mostused
         uses: lowlighter/metrics@latest
         with:
-          filename: mostused.svg
+          filename: /picture/mostused.svg
           token: ${{ secrets.METRICS_TOKEN }}
           user: CompPsyUnion
           template: classic
@@ -44,28 +44,22 @@ jobs:
           plugin_languages_recent_load: 300
           plugin_languages_sections: most-used
           plugin_languages_threshold: 0%
-          output_action: commit
-          committer_branch: metrics-renders
-          committer_message: "chore: update metrics"
           
       - name: People
         uses: lowlighter/metrics@latest
         with:
-          filename: people.svg
+          filename: /picture/people.svg
           token: ${{ secrets.METRICS_TOKEN }}
           base: ""
           plugin_people: yes
           plugin_people_limit: 24
           plugin_people_size: 28
           plugin_people_types: members
-          output_action: commit
-          committer_branch: metrics-renders
-          committer_message: "chore: update metrics"
 
       - name: Activity
         uses: lowlighter/metrics@latest
         with:
-          filename: activity.svg
+          filename: /picture/activity.svg
           token: ${{ secrets.METRICS_TOKEN }}
           user: CompPsyUnion
           template: classic
@@ -80,14 +74,10 @@ jobs:
       - name: Mildly interesting facts
         uses: lowlighter/metrics@latest
         with:
-          filename: metrics.plugin.habits.facts.svg
+          filename: /picture/facts.svg
           token: ${{ secrets.METRICS_TOKEN }}
           base: ""
           plugin_habits: yes
           plugin_habits_facts: yes
           plugin_habits_charts: no
           config_timezone: Asia/Shanghai
-          output_action: commit
-          committer_branch: metrics-renders
-          committer_message: "chore: update metrics"
-
