@@ -21,6 +21,9 @@ jobs:
           template: classic
           base: header, activity, repositories, metadata
           config_timezone: Asia/Shanghai
+          output_action: commit
+          committer_branch: metrics-renders
+          committer_message: "chore: update metrics"
 
       - name: Mostused
         uses: lowlighter/metrics@latest
@@ -41,6 +44,9 @@ jobs:
           plugin_languages_recent_load: 300
           plugin_languages_sections: most-used
           plugin_languages_threshold: 0%
+          output_action: commit
+          committer_branch: metrics-renders
+          committer_message: "chore: update metrics"
           
       - name: People
         uses: lowlighter/metrics@latest
@@ -52,17 +58,9 @@ jobs:
           plugin_people_limit: 24
           plugin_people_size: 28
           plugin_people_types: members
-
-      - name: Followers
-        uses: lowlighter/metrics@latest
-        with:
-          filename: followers.svg
-          token: ${{ secrets.METRICS_TOKEN }}
-          base: ""
-          plugin_people: yes
-          plugin_people_limit: 24
-          plugin_people_size: 28
-          plugin_people_types: followers
+          output_action: commit
+          committer_branch: metrics-renders
+          committer_message: "chore: update metrics"
 
       - name: Activity
         uses: lowlighter/metrics@latest
@@ -78,3 +76,18 @@ jobs:
           plugin_activity_limit: 5
           plugin_activity_load: 300
           plugin_activity_visibility: all
+
+      - name: Mildly interesting facts
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.plugin.habits.facts.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: ""
+          plugin_habits: yes
+          plugin_habits_facts: yes
+          plugin_habits_charts: no
+          config_timezone: Asia/Shanghai
+          output_action: commit
+          committer_branch: metrics-renders
+          committer_message: "chore: update metrics"
+
