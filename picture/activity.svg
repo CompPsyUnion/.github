@@ -30,7 +30,7 @@
                                 <div class="details">
                                     <div>on branch <span class="code">main</span></div>
                                     <div class="commit">
-                                        <div class="sha">#c3665f7</div>
+                                        <div class="sha">#216e184</div>
                                         <div class="message">Update picture/base.svg - [Skip GitHub Action]</div>
                                     </div>
                                 </div>
@@ -43,7 +43,7 @@
                                         <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/>
                                     </svg>
                                     <div class="content">
-                                        <div class="user">Pleasurecruise</div>
+                                        <div class="user">github-actions[bot]</div>
                                         pushed 1 commit in
                                         <span class="repo">CompPsyUnion/.github</span>
                                     </div>
@@ -51,8 +51,8 @@
                                 <div class="details">
                                     <div>on branch <span class="code">main</span></div>
                                     <div class="commit">
-                                        <div class="sha">#b873f3c</div>
-                                        <div class="message">Update metrics_renders.yml</div>
+                                        <div class="sha">#a9c4ea5</div>
+                                        <div class="message">Update picture/followup.svg - [Skip GitHub Action]</div>
                                     </div>
                                 </div>
                             </section>
@@ -64,7 +64,7 @@
                                         <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/>
                                     </svg>
                                     <div class="content">
-                                        <div class="user">Pleasurecruise</div>
+                                        <div class="user">github-actions[bot]</div>
                                         pushed 1 commit in
                                         <span class="repo">CompPsyUnion/.github</span>
                                     </div>
@@ -72,8 +72,8 @@
                                 <div class="details">
                                     <div>on branch <span class="code">main</span></div>
                                     <div class="commit">
-                                        <div class="sha">#1dda620</div>
-                                        <div class="message">Update README.md</div>
+                                        <div class="sha">#d0652b0</div>
+                                        <div class="message">Update picture/facts.svg - [Skip GitHub Action]</div>
                                     </div>
                                 </div>
                             </section>
@@ -85,7 +85,7 @@
                                         <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/>
                                     </svg>
                                     <div class="content">
-                                        <div class="user">Pleasurecruise</div>
+                                        <div class="user">github-actions[bot]</div>
                                         pushed 1 commit in
                                         <span class="repo">CompPsyUnion/.github</span>
                                     </div>
@@ -93,8 +93,8 @@
                                 <div class="details">
                                     <div>on branch <span class="code">main</span></div>
                                     <div class="commit">
-                                        <div class="sha">#bac4401</div>
-                                        <div class="message">Delete activity.svg</div>
+                                        <div class="sha">#088e4ac</div>
+                                        <div class="message">Update picture/activity.svg - [Skip GitHub Action]</div>
                                     </div>
                                 </div>
                             </section>
@@ -106,7 +106,7 @@
                                         <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/>
                                     </svg>
                                     <div class="content">
-                                        <div class="user">Pleasurecruise</div>
+                                        <div class="user">github-actions[bot]</div>
                                         pushed 1 commit in
                                         <span class="repo">CompPsyUnion/.github</span>
                                     </div>
@@ -114,8 +114,8 @@
                                 <div class="details">
                                     <div>on branch <span class="code">main</span></div>
                                     <div class="commit">
-                                        <div class="sha">#4c9eb72</div>
-                                        <div class="message">Delete base.svg</div>
+                                        <div class="sha">#afbcc5f</div>
+                                        <div class="message">Update picture/achievements.svg - [Skip GitHub Action]</div>
                                     </div>
                                 </div>
                             </section>
