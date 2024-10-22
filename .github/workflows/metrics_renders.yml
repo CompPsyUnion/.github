@@ -19,7 +19,7 @@ jobs:
           filename: base.svg
           token: ${{ secrets.METRICS_TOKEN }}
           output_action: gist
-          committer_gist: ${{ secrets.GIST }}
+          committer_gist: ${{ secrets.GISTS }}
           user: CompPsyUnion
           template: classic
           base: header, activity, repositories, metadata
@@ -30,6 +30,8 @@ jobs:
         with:
           filename: picture/mostused.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          output_action: gist
+          committer_gist: ${{ secrets.GISTS }}
           user: CompPsyUnion
           template: classic
           base: ""
@@ -51,7 +53,7 @@ jobs:
           filename: picture/people.svg
           token: ${{ secrets.METRICS_TOKEN }}
           output_action: gist
-          committer_gist: ${{ secrets.GIST }}
+          committer_gist: ${{ secrets.GISTS }}
           base: ""
           plugin_people: yes
           plugin_people_limit: 24
@@ -64,7 +66,7 @@ jobs:
           filename: picture/activity.svg
           token: ${{ secrets.METRICS_TOKEN }}
           output_action: gist
-          committer_gist: ${{ secrets.GIST }}
+          committer_gist: ${{ secrets.GISTS }}
           user: CompPsyUnion
           template: classic
           base: ""
@@ -81,7 +83,7 @@ jobs:
           filename: picture/facts.svg
           token: ${{ secrets.METRICS_TOKEN }}
           output_action: gist
-          committer_gist: ${{ secrets.GIST }}
+          committer_gist: ${{ secrets.GISTS }}
           base: ""
           plugin_habits: yes
           plugin_habits_facts: yes
@@ -94,7 +96,7 @@ jobs:
           filename: picture/followup.svg
           token: ${{ secrets.METRICS_TOKEN }}
           output_action: gist
-          committer_gist: ${{ secrets.GIST }}
+          committer_gist: ${{ secrets.GISTS }}
           base: ""
           plugin_followup: yes
           plugin_followup_indepth: yes
