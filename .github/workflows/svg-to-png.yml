@@ -12,17 +12,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 安装 ImageMagick
-      - name: Install ImageMagick
-        run: sudo apt-get install imagemagick
+      - name: Install rsvg-convert
+        run: sudo apt-get install librsvg2-bin
 
       - name: Convert SVG to PNG
         run: |
           for file in $(find ./picture -name '*.svg'); do
             output="${file%.svg}.png"
-            convert "$file" "$output"
+            rsvg-convert "$file" -o "$output"
           done
-
+          
       - name: Commit and Push PNG files
         run: |
           git config --local user.name "github-actions[bot]"
