@@ -16,8 +16,10 @@ jobs:
       - name: Base
         uses: lowlighter/metrics@latest
         with:
-          filename: picture/base.svg
+          filename: base.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          output_action: gist
+          committer_gist: ${{ secrets.GIST }}
           user: CompPsyUnion
           template: classic
           base: header, activity, repositories, metadata
@@ -48,6 +50,8 @@ jobs:
         with:
           filename: picture/people.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          output_action: gist
+          committer_gist: ${{ secrets.GIST }}
           base: ""
           plugin_people: yes
           plugin_people_limit: 24
@@ -59,6 +63,8 @@ jobs:
         with:
           filename: picture/activity.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          output_action: gist
+          committer_gist: ${{ secrets.GIST }}
           user: CompPsyUnion
           template: classic
           base: ""
@@ -74,6 +80,8 @@ jobs:
         with:
           filename: picture/facts.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          output_action: gist
+          committer_gist: ${{ secrets.GIST }}
           base: ""
           plugin_habits: yes
           plugin_habits_facts: yes
@@ -85,6 +93,8 @@ jobs:
         with:
           filename: picture/followup.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          output_action: gist
+          committer_gist: ${{ secrets.GIST }}
           base: ""
           plugin_followup: yes
           plugin_followup_indepth: yes
