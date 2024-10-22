@@ -12,14 +12,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install rsvg-convert
-        run: sudo apt-get install librsvg2-bin
+      - name: Install Inkscape
+        run: sudo apt-get install inkscape
 
-      - name: Convert SVG to PNG
+      - name: Convert SVG to PNG using Inkscape
         run: |
           for file in $(find ./picture -name '*.svg'); do
             output="${file%.svg}.png"
-            rsvg-convert "$file" -o "$output"
+            inkscape "$file" --export-type="png" --export-filename="$output"
           done
           
       - name: Commit and Push PNG files
