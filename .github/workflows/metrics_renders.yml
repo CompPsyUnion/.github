@@ -28,7 +28,7 @@ jobs:
       - name: Mostused
         uses: lowlighter/metrics@latest
         with:
-          filename: picture/mostused.svg
+          filename: mostused.svg
           token: ${{ secrets.METRICS_TOKEN }}
           output_action: gist
           committer_gist: ${{ secrets.GISTS }}
@@ -50,7 +50,7 @@ jobs:
       - name: People
         uses: lowlighter/metrics@latest
         with:
-          filename: picture/people.svg
+          filename: people.svg
           token: ${{ secrets.METRICS_TOKEN }}
           output_action: gist
           committer_gist: ${{ secrets.GISTS }}
@@ -63,7 +63,7 @@ jobs:
       - name: Activity
         uses: lowlighter/metrics@latest
         with:
-          filename: picture/activity.svg
+          filename: activity.svg
           token: ${{ secrets.METRICS_TOKEN }}
           output_action: gist
           committer_gist: ${{ secrets.GISTS }}
@@ -80,7 +80,7 @@ jobs:
       - name: Mildly interesting facts
         uses: lowlighter/metrics@latest
         with:
-          filename: picture/facts.svg
+          filename: facts.svg
           token: ${{ secrets.METRICS_TOKEN }}
           output_action: gist
           committer_gist: ${{ secrets.GISTS }}
@@ -93,7 +93,7 @@ jobs:
       - name: Opened
         uses: lowlighter/metrics@latest
         with:
-          filename: picture/followup.svg
+          filename: followup.svg
           token: ${{ secrets.METRICS_TOKEN }}
           output_action: gist
           committer_gist: ${{ secrets.GISTS }}
