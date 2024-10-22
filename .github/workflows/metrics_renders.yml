@@ -16,7 +16,7 @@ jobs:
       - name: Base
         uses: lowlighter/metrics@latest
         with:
-          filename: picture/base.svg
+          filename: picture/base.png
           token: ${{ secrets.METRICS_TOKEN }}
           user: CompPsyUnion
           template: classic
@@ -26,7 +26,7 @@ jobs:
       - name: Mostused
         uses: lowlighter/metrics@latest
         with:
-          filename: picture/mostused.svg
+          filename: picture/mostused.png
           token: ${{ secrets.METRICS_TOKEN }}
           user: CompPsyUnion
           template: classic
@@ -46,7 +46,7 @@ jobs:
       - name: People
         uses: lowlighter/metrics@latest
         with:
-          filename: picture/people.svg
+          filename: picture/people.png
           token: ${{ secrets.METRICS_TOKEN }}
           base: ""
           plugin_people: yes
@@ -57,7 +57,7 @@ jobs:
       - name: Activity
         uses: lowlighter/metrics@latest
         with:
-          filename: picture/activity.svg
+          filename: picture/activity.png
           token: ${{ secrets.METRICS_TOKEN }}
           user: CompPsyUnion
           template: classic
@@ -72,7 +72,7 @@ jobs:
       - name: Mildly interesting facts
         uses: lowlighter/metrics@latest
         with:
-          filename: picture/facts.svg
+          filename: picture/facts.png
           token: ${{ secrets.METRICS_TOKEN }}
           base: ""
           plugin_habits: yes
@@ -83,7 +83,7 @@ jobs:
       - name: Opened
         uses: lowlighter/metrics@latest
         with:
-          filename: picture/followup.svg
+          filename: picture/followup.png
           token: ${{ secrets.METRICS_TOKEN }}
           base: ""
           plugin_followup: yes
