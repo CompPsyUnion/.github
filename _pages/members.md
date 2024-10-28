@@ -15,8 +15,8 @@ layout: post
 <!--START_SECTION:members-->
 ### Admin
 
-| <img src="https://avatars.githubusercontent.com/u/37460139?v=4" width="36" height="36" /> | <img src="https://avatars.githubusercontent.com/u/39254250?v=4" width="36" height="36" /> | <img src="https://avatars.githubusercontent.com/u/144885467?v=4" width="36" height="36" /> |
-| [@xuanzhi33](https://github.com/xuanzhi33) | [@buduan](https://github.com/buduan) | [@Pleasurecruise](https://github.com/Pleasurecruise) |
+| <img src="https://avatars.githubusercontent.com/u/37460139?v=4" width="36" height="36" /> | <img src="https://avatars.githubusercontent.com/u/39254250?v=4" width="36" height="36" /> | <img src="https://avatars.githubusercontent.com/u/139032713?v=4" width="36" height="36" /> | <img src="https://avatars.githubusercontent.com/u/144885467?v=4" width="36" height="36" /> |
+| [@xuanzhi33](https://github.com/xuanzhi33) | [@buduan](https://github.com/buduan) | [@SpectateurLinlan](https://github.com/SpectateurLinlan) | [@Pleasurecruise](https://github.com/Pleasurecruise) |
 
 
 ### Java
