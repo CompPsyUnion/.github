@@ -8,7 +8,9 @@ Hi👋 , we're Computer Psycho Union, UNNC!
 ## Touch us / 联系我们  
 
 📮Email: computerpsychounion@nottingham.edu.cn  
-💬WeChat: 宁诺CPU  
+📱WeChat Official Account: 宁诺CPU  
+💬Official Website: [CPU](https://comppsyunion.github.io/.github/)  
+📌CPU_Tech_Forum: [CPU_Tech_Forum](https://comppsyunion.github.io/CPU_Tech_Forum/)
 
 ## On-site Activities / 校内活动
 
