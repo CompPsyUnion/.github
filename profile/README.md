@@ -11,3 +11,5 @@
 📱WeChat Official Account: 宁诺CPU  
 💬Official Website: [CPU](https://comppsyunion.github.io/.github/)  
 📌CPU_Tech_Forum: [CPU_Tech_Forum](https://comppsyunion.github.io/CPU_Tech_Forum/)
+
+<img width="100" src="https://github.com/user-attachments/assets/16cfc02c-7306-40fc-b44f-1627695edaa3">
