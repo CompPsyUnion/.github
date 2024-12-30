@@ -21,6 +21,12 @@
 
 如果你对软件开发、算法赛事、机器学习感兴趣，欢迎与我们沟通。  
 
+### 成员项目发起 / 转入流程
+0. 已有项目，先通过``GitHub``发起项目转移(Transfer)
+1. 发送[📧邮件](mailto:computerpsychounion@nottingham.edu.cn)给CPU官邮，主题为**"Group Project Application - 你的项目名称"**, 并且邮件中写清项目介绍(中英文均可)
+2. 等待仓库管理员/社团负责人审核，审核通过后将转入CPU组织内；若审核未通过，将通过GitHub转回你的个人账户。
+3. 你将获得项目仓库的管理员权限，邀请小伙伴一起协作吧！
+
 ### Others
 \[推广\]由Yiming Wang 和 Anzhi Xu共同开发的校园墙类小程序，欢迎试用：
 
