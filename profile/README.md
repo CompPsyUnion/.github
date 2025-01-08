@@ -7,8 +7,6 @@
   ![most_used](https://gist.githubusercontent.com/Pleasurecruise/7161f719beaa843297060a8c5b4b96a2/raw/mostused.svg)
   ![people](https://gist.githubusercontent.com/Pleasurecruise/7161f719beaa843297060a8c5b4b96a2/raw/people.svg)
   
-<hr>
-
 ### Touch us / 联系我们
 
 📮 Email: [computerpsychounion@nottingham.edu.cn](mailto:computerpsychounion@nottingham.edu.cn)  
@@ -23,12 +21,11 @@
 
 ### 成员项目发起 / 转入流程
 0. 已有项目，先通过``GitHub``发起项目转移(Transfer)
-1. 发送[📧邮件](mailto:computerpsychounion@nottingham.edu.cn)给CPU官邮，主题为**"Group Project Application - 你的项目名称"**, 并且邮件中写清项目介绍(中英文均可)
+1. 发送[📧邮件](mailto:computerpsychounion@nottingham.edu.cn)给CPU官邮，主题为 **"Group Project Application - 你的项目名称"** , 并且邮件中写清项目介绍(中英文均可)
 2. 等待仓库管理员/社团负责人审核，审核通过后将转入CPU组织内；若审核未通过，将通过GitHub转回你的个人账户。
 3. 你将获得项目仓库的管理员权限，邀请小伙伴一起协作吧！
 
 ### Others
-\[推广\]由Yiming Wang 和 Anzhi Xu共同开发的校园墙类小程序，欢迎试用：
+\[推广\]在组织内开源的校园墙类小程序，欢迎试用：
 
 <img width="100" src="https://github.com/user-attachments/assets/16cfc02c-7306-40fc-b44f-1627695edaa3">
-此项目已在GitHub 组织内开源。
