@@ -1,11 +1,6 @@
 👋 你好，我们是宁波诺丁汉大学计算机爱好者协会！  
 👋 Hi, we are Computer Psychologist Union of UNNC!  
 🌍 中文 | [English](/README_en.md)
-
-  ![basic_info](https://gist.githubusercontent.com/Pleasurecruise/7161f719beaa843297060a8c5b4b96a2/raw/base.svg)
-  
-  ![most_used](https://gist.githubusercontent.com/Pleasurecruise/7161f719beaa843297060a8c5b4b96a2/raw/mostused.svg)
-  ![people](https://gist.githubusercontent.com/Pleasurecruise/7161f719beaa843297060a8c5b4b96a2/raw/people.svg)
   
 ### Touch us / 联系我们
 
